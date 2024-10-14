@@ -1,5 +1,5 @@
 # Этап сборки: установка Node.js и установка зависимостей
-FROM node:22 AS build
+FROM node:21 AS build
 
 # Установим рабочую директорию
 WORKDIR /app
@@ -10,6 +10,8 @@ COPY angular.json ./
 COPY tsconfig.app.json ./
 COPY tsconfig.json ./
 
+RUN npm install -g npm@latest
+RUN npm install -g @angular/cli
 # Установим зависимости
 RUN npm install
 
